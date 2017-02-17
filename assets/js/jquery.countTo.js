@@ -12,6 +12,30 @@
 				decimals:        $(this).data('decimals')
 			}, options);
 
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
+
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
+
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
+
 			// how many times to update the value, and how much to increment the value on each update
 			var loops = Math.ceil(settings.speed / settings.refreshInterval),
 				increment = (settings.to - settings.from) / loops;
@@ -56,6 +80,50 @@
 				}
 			}
 
+			function updateTimer2() {
+				value += increment;
+				loopCount++;
+
+				render(value);
+
+				if (typeof(settings.onUpdate) == 'function') {
+					settings.onUpdate.call(self, value);
+				}
+
+				if (loopCount >= loops) {
+					// remove the interval
+					$self.removeData('countTo');
+					clearInterval(data.interval);
+					value = settings.to;
+
+					if (typeof(settings.onComplete) == 'function') {
+						settings.onComplete.call(self, value);
+					}
+				}
+			}
+
+			function updateTimer3() {
+				value += increment;
+				loopCount++;
+
+				render(value);
+
+				if (typeof(settings.onUpdate) == 'function') {
+					settings.onUpdate.call(self, value);
+				}
+
+				if (loopCount >= loops) {
+					// remove the interval
+					$self.removeData('countTo');
+					clearInterval(data.interval);
+					value = settings.to;
+
+					if (typeof(settings.onComplete) == 'function') {
+						settings.onComplete.call(self, value);
+					}
+				}
+			}
+
 			function render(value) {
 				var formattedValue = settings.formatter.call(self, value, settings);
 				$self.text(formattedValue);
@@ -69,6 +137,50 @@
 		speed: 1000,           // how long it should take to count between the target numbers
 		refreshInterval: 100,  // how often the element should be updated
 		decimals: 0,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+
+	$.fn.countTo.defaults = {
+		from: 0,               // the number the element should start at
+		to: 0,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 100,  // how often the element should be updated
+		decimals: 0,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+
+	$.fn.countTo.defaults = {
+		from: 30,               // the number the element should start at
+		to: 5,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 100,  // how often the element should be updated
+		decimals: 50,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+
+	$.fn.countTo.defaults = {
+		from: 5,               // the number the element should start at
+		to: 25,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 100,  // how often the element should be updated
+		decimals: 0,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+
+	$.fn.countTo.defaults = {
+		from: 16,               // the number the element should start at
+		to: 25,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 100,  // how often the element should be updated
+		decimals: 30,           // the number of decimal places to show
 		formatter: formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
