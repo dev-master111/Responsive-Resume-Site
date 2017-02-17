@@ -98,7 +98,7 @@ h1, h2, h3 {
 	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	line-height: 1.1;
 	margin-bottom: 15px;
-	color: #000;
+	color: #666;
 	margin: 10px 0 10px;
 	padding: 10px 0;
 	line-height: 1.2;
@@ -106,7 +106,7 @@ h1, h2, h3 {
 	border-bottom: 1px solid #ccc;
 }
 h1 {
-	font-size: 36px;
+	font-size: 48px;
 }
 h2 {
 	font-size: 28px;
@@ -128,7 +128,7 @@ ul li, ol li {
 		Nuke it from orbit. It's the only way to be sure.
 ------------------------------------------------------ */
 /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-.container {
+.container - fluid {
 	display: block!important;
 	max-width: 600px!important;
 	margin: 0 auto!important; /* makes it centered */
@@ -141,12 +141,23 @@ ul li, ol li {
 	padding: 20px;
 }
 /* This should also be a block element, so that it will fill 100% of the .container */
+.content- name {
+	max-width: 600px;
+	margin: 0 auto;
+	display: block;
+}
+body-wrap .container {
+	padding: 20px;
+}
 .content {
 	max-width: 600px;
 	margin: 0 auto;
 	display: block;
 }
 /* Let's make sure tables in the content area are 100% wide */
+.content table {
+	width: 100%;
+}
 .content table {
 	width: 100%;
 }
